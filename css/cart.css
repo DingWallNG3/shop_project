@@ -1,0 +1,28 @@
+.cart {
+    display:inline-block;
+    width: 400px;
+    height: 600px;
+}
+
+.cart-body {
+    margin: 20px;
+    padding-top: 15px;
+    border: 2px solid lightgray;
+    border-radius: 5px;
+}
+
+.put-area {
+    background: black;
+    color: white;
+    width: 90%;
+    height: 200px;
+    text-align: center;
+    padding-top: 85px;
+    margin: auto;
+}
+
+.cart-text {
+    text-align: right;
+    padding: 10px;
+    margin-bottom: 0px;
+}

@@ -3,20 +3,21 @@ let now = dt.getFullYear() + '-' + dt.getMonth() + '-' + dt.getDate() + '  ' + d
 $('.invoice-time').html(now);
 
 $('.invoice-close').on('click', () =>{
-  $('.invoice').css('display', 'none');
+  $('.invoice').removeClass('show').addClass('hide');
 });
 
-
-function productDetail(products) {
-  let canvas = document.getElementById('invoice-canvas');
+function invoiceDetail(cart, sum) {
+  let canvas = document.getElementsByClassName('invoice-canvas')[0];
+  canvas.innerHTML = '';
   let c = canvas.getContext("2d");
   c.font = '20px serif';
-  for (let i = 0; i < products.length; i++){
-    c.fillText('상품이름', 30, 30);
-    c.fillText('회사명', 30, 50);
-    c.fillText('가격', 30, 70);
-    c.fillText('수량', 30, 90);
-    c.fillText('합계', 30, 110);
+  for (let i = 0; i < cart.length; i++) {
+    let total = cart[i].price * cart[i].quantity;
+    c.fillText(cart[i].product_name, 30, 30 + i * 150);
+    c.fillText(cart[i].brand_name, 30, 50 + i * 150);
+    c.fillText('가격: '+cart[i].price, 30, 70 + i * 150);
+    c.fillText('수량: '+cart[i].quantity, 30, 90 + i * 150);
+    c.fillText('합계: '+String(total), 30, 110 + i * 150);
   }
-  c.fillText('총합계', 30, 170);
+  c.fillText('총 합계: ' + sum, 30, 170 + cart.length * 150);
 }

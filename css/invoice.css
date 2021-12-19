@@ -1,7 +1,7 @@
 .invoice {
     position: fixed;
     background: white;
-    display: none;
+    margin: auto;
     margin: auto;
     border-radius: 10px;
     width: 80%;
@@ -9,6 +9,15 @@
     border: 2px solid lightgray;
     z-index: 5;
 }
+
+.hide {
+    display: none;
+}
+
+.show {
+    display: block;
+}
+
 .invoice-title {
     padding: 10px 20px;
 }

@@ -1,87 +1,91 @@
-// $.ajax({
-//   url: 'json/store.json',
-//   dataType: 'json'
-//   }).done((data) => {
-//     makeCard(data);
-// });
-
 let products = [
   {
     "id": 0,
     "product_name": "식기세척기",
     "brand_name": "세척나라",
-    "photo": "pr1.jpg",
+    "photo": "img/pr1.jpg",
     "price": 100000
   },
   {
     "id": 1,
     "product_name": "원목 침대 프레임",
     "brand_name": "침대나라",
-    "photo": "pr2.jpg",
+    "photo": "img/pr2.jpg",
     "price": 200000
   },
   {
     "id": 2,
     "product_name": "천연 디퓨저 세트",
     "brand_name": "향기나라",
-    "photo": "pr3.jpg",
+    "photo": "img/pr3.jpg",
     "price": 300000
   },
   {
     "id": 3,
     "product_name": "시원한 서큘레이터",
     "brand_name": "바람나라",
-    "photo": "pr4.jpg",
+    "photo": "img/pr4.jpg",
     "price": 400000
   }
 ];
 
-makeCard(products);
+// $.ajax({
+//   url: 'json/store.json',
+//   dataType: 'json'
+//   }).done((data) => {
+//     console.log(data);
+//     for (let i = 0; i < data.length; i++){
+//       console.log(data[i]);
+//       products.push(data[i]);
+//     }
+// });
 
-function clearCard() {
-  $('.product-list').html('');
+makeCard(products, '.product-list');
+
+function clearCard(area) {
+  $(area).html('');
 }
 
-function makeCard(list) {
-  clearCard();
+function makeCard(list, area) {
+  clearCard(area);
   list.forEach((i) => {
-    let tmp =
-      `<div class="card">
-        <img src="img/${i.photo}" class="card-img-top" alt="...">
+    let tmp = '';
+    if (area == '.cart-items'){
+      tmp = `<div class="card card-view" id="card">
+        <img src="${i.photo}" class="card-img-top" alt="...">
         <div class="card-body">
             <h5 class="card-title">${i.product_name}</h5>
             <p class="card-text">${i.brand_name}</p>
         </div>
-        <div class="card-bottom">${i.price}</div>
+        <div class="card-bottom">
+            <h6>${i.price}</h6>
+        </div>
+      <div class="input-group input-group-sm mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="inputGroup-sizing-sm">수량</span>
+        </div>
+        <input type="text" class="form-control" aria-label="Sizing example input"
+               aria-describedby="inputGroup-sizing-sm" value="${i.quantity}">
+      </div>
+      <div>
+        <p>합계 : ${i.price * i.quantity}</p>
+      </div>
       </div>`;
-    $('.product-list').append(tmp);
+    } else {
+      tmp =
+        `<div class="card card-view" id="card">
+        <img src="${i.photo}" class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 class="card-title">${i.product_name}</h5>
+            <p class="card-text">${i.brand_name}</p>
+        </div>
+        <div class="card-bottom">
+            <h6>${i.price}</h6>
+        </div>
+      </div>`;
+    }
+    $(area).append(tmp);
+
   });
 }
 
-
-// 검색창 이벤트리스너
-$('#search').on('input', () => {
-  let word = $('#search').val();
-  let cards = $('.card');
-
-  for (let i = 0; i < cards.length; i++) {
-    cards.eq(i).html(cards.eq(i).html().replaceAll('<span class=highlight>',''));
-    cards.eq(i).html(cards.eq(i).html().replaceAll('</span>',''));
-  }
-
-  for (let i = 0; i < cards.length; i++) {
-    $('.card').eq(i).css('display', 'inline-block');
-  }
-
-  let tmp = ['card-title', 'card-text', 'card-bottom'];
-  for (let i = 0; i < cards.length; i++) {
-    if (cards.eq(i).html().indexOf(word) == -1) {
-      $('.card').eq(i).css('display', 'none');
-    } else {
-      tmp.forEach((e) => {
-        let title = $('.${e}').eq(i);
-        title.html(title.html().replaceAll(word, '<span class=highlight>'+ word + '</span>'));
-      });
-    }
-  }
-});
