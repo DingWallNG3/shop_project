@@ -1,0 +1,20 @@
+.invoice {
+    position: fixed;
+    background: white;
+    display: none;
+    margin: auto;
+    border-radius: 10px;
+    width: 80%;
+    padding: 20px;
+    border: 2px solid lightgray;
+    z-index: 5;
+}
+.invoice-title {
+    padding: 10px 20px;
+}
+
+.invoice-top {
+    background: lightgray;
+    height: 50px;
+    width: 100%;
+}

@@ -5,15 +5,103 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
           integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" rel="stylesheet">
+    <link rel="stylesheet" href="css/invoice.css">
+    <link rel="stylesheet" href="css/main.css">
     <title>Hello, world!</title>
 </head>
 <body>
+
+<!--영수증-->
+    <div class="invoice">
+        <div class="invoice-top"></div>
+        <div class="invoice-title">
+            <h3>영수증</h3>
+            <p class="invoice-time">시간</p>
+        </div>
+        <canvas class="invoice-canvas"></canvas>
+        <hr>
+        <div class="invoice_bot">
+            <button class="invoice-close btn-danger">닫기</button>
+        </div>
+    </div>
+
+<!--Navi bar-->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light" style="background: black;">
+        <nav class="navbar navbar-light bg-light">
+            <a class="navbar-brand" href="#">
+                <img src="img/home.png" width="30" height="30" class="d-inline-block align-top" alt="">
+                내집꾸미기
+            </a>
+        </nav>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">홈 <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">온라인 집들이</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">스토어</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">전문가</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">시공 견적</a>
+                </li>
+
+                <form class="form-inline my-2 my-lg-0" style="position: absolute; right: 2%;">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="button" style="margin: 5px;">로그인</button>
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="button" style="margin: 5px;">회원가입</button>
+                </form>
+            </ul>
+        </div>
+    </nav>
+
+<!--search bar-->
+    <div class="search-bar">
+        <input type="text" placeholder="검색어를 입력해주세요." id="search">
+    </div>
+
+
+<!--메인창-->
+    <div>
+    <!-- 상품 리스트 -->
+        <div class="product">
+            <div>
+                <h3 style="text-align: left; padding-left: 15px;">모든 상품 리스트</h3>
+            </div>
+            <div class="product-list">
+            </div>
+        </div>
+
+    <!-- 장바구니-->
+        <div class="cart">
+            <div>
+                <h3 style="text-align: left; padding-left: 15px;">장바구니</h3>
+            </div>
+            <div class="cart-body">
+                <div class="put-area">이곳에 상품을 놓아주세요.</div>
+                <p class="cart-text">총 합계 0원</p>
+                <a href="#" class="btn btn-primary" style="width: 100%;">구매하기</a>
+            </div>
+        </div>
+    </div>
+
     <script crossorigin="anonymous"
             integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
             src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script crossorigin="anonymous"
             integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF"
             src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/invoice.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/top_menu.js"></script>
 
 </body>
 </html>
